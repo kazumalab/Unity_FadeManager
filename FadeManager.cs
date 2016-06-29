@@ -11,7 +11,7 @@ public class FadeManager : MonoBehaviour { // ここでゲームオーバー処�
 	/// 基本的にenableFadeをtrueにしたあと、したいフェードのboolをtrueに変える
 	/// </summary>
 	public bool enableFade = false;
-	public bool enableFadeIn;
+	public bool enableFadeIn = false;
 	public bool enableFadeOut = false;
 	public bool enableFadeOn = false;
 
