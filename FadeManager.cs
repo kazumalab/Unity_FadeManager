@@ -11,9 +11,8 @@ public class FadeManager : MonoBehaviour { // ここでゲームオーバー処�
 	/// 基本的にenableFadeをtrueにしたあと、したいフェードのboolをtrueに変える
 	/// </summary>
 	public bool enableFade = false;
-	public bool enableFastFade;
-	public bool enableEndFade = false;
-	public bool enableDeathEnd = false;
+	public bool enableFadeIn;
+	public bool enableFadeOut = false;
 	public bool enableFadeOn = false;
 
 	public float speed = 0.02f;
@@ -28,7 +27,7 @@ public class FadeManager : MonoBehaviour { // ここでゲームオーバー処�
 
 	void Start () {
 		enableFade = true;
-		enableFastFade = true;
+		enableFadeIn = true;
 		setAlpha (FadeImage, count);
 	}
 
@@ -38,11 +37,11 @@ public class FadeManager : MonoBehaviour { // ここでゲームオーバー処�
 			FadeInAndOut (FadeImage);
 		}
 		
-		if (enableFastFade) {
+		if (enableFadeIn) {
 			FadeIn (FadeImage);
 		}
 
-		if (enableEndFade) {
+		if (enableFadeOut) {
 			FadeOut (FadeImage);
 		}
 	}
@@ -57,8 +56,9 @@ public class FadeManager : MonoBehaviour { // ここでゲームオーバー処�
 			setAlpha (image, count);
 			if (image.color.a >= 1f) {
 				enableFade = false;
-				if (enableEndFade) {
-					SceneManager.LoadScene (1);
+				if (enableFadeOut) {
+					//SceneManager.LoadScene (1);
+					// フェードアウトした時の処理をここに書く
 				} 
 			}
 		}
@@ -70,7 +70,7 @@ public class FadeManager : MonoBehaviour { // ここでゲームオーバー処�
 			setAlpha (image, count);
 			if (image.color.a <= 0f) {
 				enableFade = false;
-				enableFastFade = false;
+				enableFadeIn = false;
 			}
 		}
 	}
